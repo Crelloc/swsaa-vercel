@@ -5,12 +5,14 @@
     "node": "18.x"
   },
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "backend:build": "node app.js",
     "backend:development": "nodemon app.js",
     "frontend:build": "webpack --progress --config webpack.config.build.js && cp favicon_io/* public/ && cp sitemap.xml public/",
     "frontend:development": "webpack serve --progress --config webpack.config.development.js",
-    "start": "concurrently --kill-others \"npm run backend:development\" \"npm run frontend:development\"",
+    "start:con": "concurrently --kill-others \"npm run backend:development\" \"npm run frontend:development\"",
+    "start": "node app.js",
     "production": "concurrently --kill-others \"npm run frontend:build\" \"npm run backend:build\"",
     "vercel-build": "echo hello"
   },
