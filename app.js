@@ -247,3 +247,5 @@ if (!isDev && cluster.isMaster) {
     );
   });
 }
+
+export default app;
