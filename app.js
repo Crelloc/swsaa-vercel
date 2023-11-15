@@ -166,7 +166,7 @@ if (!isDev && cluster.isMaster) {
     };
   };
 
-  app.get("/", async (req, res) => {
+  app.get("api/", async (req, res) => {
     // const api = await initApi(req);
     // const defaults = await handleRequest(api);
     // const home = await api.getSingle("home");
