@@ -65,5 +65,8 @@
     "prismic-dom": "^2.2.5",
     "pug": "^3.0.2",
     "ua-parser-js": "^0.7.28"
+  },
+  "pkg": {
+   "assets": [ "./views/**/*", "./public"]
   }
 }
