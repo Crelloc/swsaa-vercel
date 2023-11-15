@@ -1,4 +1,5 @@
 require("dotenv").config();
+const api = require("./api");
 const cluster = require("cluster");
 const numCPUs = require("os").cpus().length;
 const isDev = process.env.NODE_ENV !== "production";
@@ -54,6 +55,8 @@ if (!isDev && cluster.isMaster) {
     );
   });
 } else {
+  app.use("/api", api);
+
   app.use(logger("dev"));
   // app.use(
   //   express.json({
@@ -239,11 +242,11 @@ if (!isDev && cluster.isMaster) {
     console.log(req.body);
   });
 
-app.get('/test', (req, res) => {
-  res.json({
-    message: '🦄🌈✨👋🌎🌍🌏✨🌈🦄',
+  app.get("/test", (req, res) => {
+    res.json({
+      message: "🦄🌈✨👋🌎🌍🌏✨🌈🦄",
+    });
   });
-});
   app.listen(PORT, () => {
     console.log(
       `Node ${
@@ -251,7 +254,6 @@ app.get('/test', (req, res) => {
       }: listening on port ${PORT}`
     );
   });
-
 }
 
-module.exports =  app;
+module.exports = app;
