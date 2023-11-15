@@ -4,6 +4,7 @@
   "engines": {
     "node": "18.x"
   },
+  "main": "app.js",
   "scripts": {
     "backend:build": "node app.js",
     "backend:development": "nodemon app.js",
