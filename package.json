@@ -5,8 +5,7 @@
     "node": "18.x"
   },
   "main": "app.js",
-  "type": "module",
-  "scripts": {
+    "scripts": {
     "backend:build": "node app.js",
     "backend:development": "nodemon app.js",
     "frontend:build": "webpack --progress --config webpack.config.build.js && cp favicon_io/* public/ && cp sitemap.xml public/",
