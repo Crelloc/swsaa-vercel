@@ -238,6 +238,12 @@ if (!isDev && cluster.isMaster) {
   app.post("/__cspreport__", (req, res) => {
     console.log(req.body);
   });
+
+app.get('/test', (req, res) => {
+  res.json({
+    message: '🦄🌈✨👋🌎🌍🌏✨🌈🦄',
+  });
+});
   app.listen(PORT, () => {
     console.log(
       `Node ${
