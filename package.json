@@ -1,11 +1,11 @@
 {
-  "name": "",
+  "name": "swsaa",
   "version": "1.0.0",
   "engines": {
     "node": "18.x"
   },
   "main": "app.js",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "backend:build": "node app.js",
     "backend:development": "nodemon app.js",
