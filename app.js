@@ -238,6 +238,13 @@ if (!isDev && cluster.isMaster) {
   app.post("/__cspreport__", (req, res) => {
     console.log(req.body);
   });
+  app.listen(PORT, () => {
+    console.log(
+      `Node ${
+        isDev ? "dev server" : "cluster worker " + process.pid
+      }: listening on port ${PORT}`
+    );
+  });
 
 }
 
