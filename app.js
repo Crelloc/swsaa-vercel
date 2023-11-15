@@ -68,6 +68,7 @@ if (!isDev && cluster.isMaster) {
   app.use(methodOverride());
   app.use(errorHandler());
   app.use(express.static(path.join(__dirname, "public")));
+  app.use(express.static(path.join(__dirname, "views")));
 
   const initApi = (req) => {
     return Prismic.getApi(process.env.PRISMIC_ENDPOINT, {
