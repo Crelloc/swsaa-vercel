@@ -11,8 +11,7 @@
     "frontend:build": "webpack --progress --config webpack.config.build.js && cp favicon_io/* public/ && cp sitemap.xml public/",
     "frontend:development": "webpack serve --progress --config webpack.config.development.js",
     "start": "concurrently --kill-others \"npm run backend:development\" \"npm run frontend:development\"",
-    "production": "concurrently --kill-others \"npm run frontend:build\" \"npm run backend:build\"",
-    "vercel-build": "echo hello"
+    "production": "concurrently --kill-others \"npm run frontend:build\" \"npm run backend:build\""
   },
   "author": "Thomas Turner",
   "devDependencies": {
