@@ -1,5 +1,4 @@
 require("dotenv").config();
-const api = require("./api");
 const cluster = require("cluster");
 const numCPUs = require("os").cpus().length;
 const isDev = process.env.NODE_ENV !== "production";
@@ -55,8 +54,6 @@ if (!isDev && cluster.isMaster) {
     );
   });
 } else {
-  app.use("/api", api);
-
   app.use(logger("dev"));
   // app.use(
   //   express.json({
