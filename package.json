@@ -5,7 +5,7 @@
     "node": "18.x"
   },
   "main": "app.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "backend:build": "node app.js",
     "backend:development": "nodemon app.js",
