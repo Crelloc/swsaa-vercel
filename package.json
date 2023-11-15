@@ -2,7 +2,7 @@
   "name": "",
   "version": "1.0.0",
   "engines": {
-    "node": "16.20.2"
+    "node": "18.x"
   },
   "scripts": {
     "backend:build": "node app.js",
