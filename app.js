@@ -68,7 +68,6 @@ if (!isDev && cluster.isMaster) {
   app.use(methodOverride());
   app.use(errorHandler());
   app.use(express.static(path.join(__dirname, "public")));
-  app.use(express.static(path.join(__dirname, "views")));
 
   const initApi = (req) => {
     return Prismic.getApi(process.env.PRISMIC_ENDPOINT, {
@@ -168,6 +167,7 @@ if (!isDev && cluster.isMaster) {
   };
 
   app.get("/", async (req, res) => {
+    console.log("home path called correctly");
     // const api = await initApi(req);
     // const defaults = await handleRequest(api);
     // const home = await api.getSingle("home");
