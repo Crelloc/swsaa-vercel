@@ -18,27 +18,6 @@ const Prismic = require("@prismicio/client");
 const PrismicDOM = require("prismic-dom");
 const UAParser = require("ua-parser-js");
 
-// const options = {
-//   directives: {
-//     "default-src": ["'self'"],
-//     "script-src": [
-//       (req, res) => `'nonce-${res.locals.Nonce}' 'strict-dynamic'`,
-//     ],
-//     "object-src": ["'self'"],
-//     "base-uri": ["'self'"],
-//     "style-src": ["'self'"],
-//     "img-src": ["'self' https://*.prismic.io data:"],
-//     "media-src": ["'self'"],
-//     "frame-src": ["'self'"],
-//     "font-src": ["'self' data:"],
-//     "connect-src": ["'self' http://localhost:8080 https://localhost:8080"],
-//     "frame-ancestors": ["'self'"],
-//     // "report-to": ["csp-endpoint"],
-//     "report-uri": ["/__cspreport__"],
-//   },
-//   // ... more config options
-// };
-
 // Multi-process to utilize all CPU cores.
 if (!isDev && cluster.isMaster) {
   console.error(`Node cluster master ${process.pid} is running`);
@@ -55,15 +34,6 @@ if (!isDev && cluster.isMaster) {
   });
 } else {
   app.use(logger("dev"));
-  // app.use(
-  //   express.json({
-  //     type: [
-  //       "application/json",
-  //       "application/csp-report",
-  //       "application/reports+json",
-  //     ],
-  //   })
-  // );
   app.use(express.urlencoded({ extended: false }));
   app.use(methodOverride());
   app.use(errorHandler());
@@ -92,39 +62,6 @@ if (!isDev && cluster.isMaster) {
 
     return "/";
   };
-
-  // generate a nonce on every request and save it
-  // app.use((req, res, next) => {
-  //   res.locals.Nonce = v4();
-  //   helmet.contentSecurityPolicy(options)(req, res, next);
-  // });
-
-  // app.use(function (req, res, next) {
-  //   res.setHeader(
-  //     "Report-To",
-  //     `{"group":"csp-endpoint","max_age":10886400,"endpoints":[{"url": "${
-  //       !isDev ? "https://swsaa.com/" : "http://localhost:3696/"
-  //     }__cspreport__"}],"include_subdomains":true}`
-  //   );
-  //   res.setHeader("x-nonce", `${res.locals.Nonce}`);
-  //   res.setHeader(
-  //     "Content-Security-Policy",
-  //     `default-src 'self'; \
-  //     script-src 'nonce-${res.locals.Nonce}' 'strict-dynamic'; \
-  //     object-src 'self'; \
-  //     base-uri 'self'; \
-  //     style-src 'self'; \
-  //     img-src 'self' https://*.prismic.io data:; \
-  //     media-src 'self'; \
-  //     frame-src 'self'; \
-  //     font-src 'self' data:; \
-  //     connect-src 'self'; \
-  //     frame-ancestors 'self'; \
-  //     report-to csp-endpoint; \
-  //     report-uri /__cspreport__;`
-  //   );
-  //   next();
-  // });
 
   app.use((req, res, next) => {
     const ua = UAParser(req.headers["user-agent"]);
@@ -168,14 +105,6 @@ if (!isDev && cluster.isMaster) {
   };
 
   app.get("/", async (req, res) => {
-    console.log("home path called correctly");
-    // const api = await initApi(req);
-    // const defaults = await handleRequest(api);
-    // const home = await api.getSingle("home");
-    // res.render("pages/home", {
-    //   ...defaults,
-    //   home,
-    // });
     const api = await initApi(req);
     const defaults = await handleRequest(api);
     const home = await api.getSingle("home");
@@ -241,11 +170,6 @@ if (!isDev && cluster.isMaster) {
     console.log(req.body);
   });
 
-  app.get("/test", (req, res) => {
-    res.json({
-      message: "🦄🌈✨👋🌎🌍🌏✨🌈🦄",
-    });
-  });
   app.listen(PORT, () => {
     console.log(
       `Node ${
