@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "http://44.214.86.71/$1", "statusCode": 301 }
+    { "source": "/(.*)", "destination": "http://swsaa.thomasturner.tech/$1", "statusCode": 301 }
   ]
 }
 
