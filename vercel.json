@@ -1,18 +1,6 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "app.js",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": ["public/**/*", "views/**/*"]
-      }
-    }
-  ],
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/api"
-    }
+    { "source": "/(.*)", "destination": "http://44.214.86.71/$1", "statusCode": 301 }
   ]
 }
+
